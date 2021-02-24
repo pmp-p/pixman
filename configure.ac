@@ -1,5 +1,5 @@
 dnl  Copyright 2005 Red Hat, Inc.
-dnl 
+dnl
 dnl  Permission to use, copy, modify, distribute, and sell this software and its
 dnl  documentation for any purpose is hereby granted without fee, provided that
 dnl  the above copyright notice appear in all copies and that both that
@@ -9,7 +9,7 @@ dnl  advertising or publicity pertaining to distribution of the software without
 dnl  specific, written prior permission.  Red Hat makes no
 dnl  representations about the suitability of this software for any purpose.  It
 dnl  is provided "as is" without express or implied warranty.
-dnl 
+dnl
 dnl  RED HAT DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
 dnl  INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO
 dnl  EVENT SHALL RED HAT BE LIABLE FOR ANY SPECIAL, INDIRECT OR
@@ -42,7 +42,7 @@ AC_PREREQ([2.57])
 #        - In the first development release where you break ABI, find
 #          all instances of "pixman-n" and change them to pixman-(n+1)
 #
-#          This needs to be done at least in 
+#          This needs to be done at least in
 #                    configure.ac
 #                    all Makefile.am's
 #                    pixman-n.pc.in
@@ -159,7 +159,7 @@ then
   CFLAGS="-O -g"
 fi
 
-# 
+#
 # We ignore pixman_major in the version here because the major version should
 # always be encoded in the actual library name. Ie., the soname is:
 #
@@ -813,7 +813,7 @@ AC_ARG_ENABLE(timers,
 		   [enable TIMER_BEGIN and TIMER_END macros [default=no]])],
    [enable_timers=$enableval], [enable_timers=no])
 
-if test $enable_timers = yes ; then 
+if test $enable_timers = yes ; then
    AC_DEFINE(PIXMAN_TIMERS, 1, [enable TIMER_BEGIN/TIMER_END macros])
 fi
 AC_SUBST(PIXMAN_TIMERS)
@@ -969,12 +969,7 @@ main ()
 
 AC_DEFUN([PIXMAN_CHECK_PTHREAD],[dnl
     if test "z$support_for_pthreads" != "zyes"; then
-	PIXMAN_LINK_WITH_ENV(
-		[$1], [pthread_test_program],
-		[PTHREAD_CFLAGS="$CFLAGS"
-		 PTHREAD_LIBS="$LIBS"
-		 PTHREAD_LDFLAGS="$LDFLAGS"
-		 support_for_pthreads=yes])
+support_for_pthreads=no
     fi
 ])
 
@@ -985,7 +980,7 @@ AC_MSG_CHECKING(for pthreads)
 PIXMAN_CHECK_PTHREAD([CFLAGS="-pthread"; LDFLAGS="-pthread"])
 PIXMAN_CHECK_PTHREAD([CFLAGS="-D_REENTRANT"; LIBS="-lpthread"])
 PIXMAN_CHECK_PTHREAD([CFLAGS="-D_REENTRANT"; LDFLAGS="-lroot"])
-    
+
 if test $support_for_pthreads = yes; then
     AC_DEFINE([HAVE_PTHREADS], [], [Whether pthreads is supported])
     if test $ac_cv_tls = none ; then
@@ -1103,7 +1098,7 @@ m4_if(m4_eval(pixman_minor % 2), [1], [
    echo "      pixman-0.]m4_eval(pixman_minor & ~1)[.x are stable releases, whereas pixman-$PIXMAN_VERSION_MAJOR.$PIXMAN_VERSION_MINOR.$PIXMAN_VERSION_MICRO is a "
    echo "      development snapshot that may contain bugs and experimental "
    echo "      features. "
-   echo 
+   echo
    echo "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
    echo
 ])

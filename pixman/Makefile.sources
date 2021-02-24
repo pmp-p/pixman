@@ -5,6 +5,6 @@ libpixman_sources =			\
 
 libpixman_headers =			\
 	pixman.h			\
-        pixman-compiler.h               \
+	pixman-compiler.h               \
 	pixman-private.h		\
 	$(NULL)
